@@ -17,7 +17,7 @@ Deploy to a web server or run locally. It's static html. You could probably very
 | message | Ads Running: |
 | timer  |  15 (seconds) |
 
-You can also host it locally using a url like this, which will give you a 120 second timer with a message that says PONY:
+You can also just add the file locally using a url like this as an OBS Browser Source, which will give you a 120 second timer with a message that says PONY:
 
 ```file://path/to/countdown/index.html?message=pony&timer=120```
 
