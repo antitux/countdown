@@ -1,0 +1,20 @@
+@font-face {
+    font-family: 'VCR';
+    src: url(vcr.ttf);
+}
+
+div {
+    margin: auto;
+    padding: 15%;
+    font-size: 17vw;
+    font-size: 17vh;
+    color: white;
+    text-shadow:
+        -10px -10px 0 #000,  
+         10px -10px 0 #000,
+        -10px 10px 0 #000,
+         10px 10px 0 #000;
+    font-family: 'VCR', monospace;
+    text-align: center;
+    text-transform: uppercase;
+}
