@@ -14,7 +14,7 @@ if (searchParams.has('timer')) {
 if (searchParams.has('message')) {
     console.log(searchParams.get('message'));
     message = searchParams.get('message');
-} else {
+    } else {
     message = "Ads Running:";
 }
 
@@ -36,12 +36,7 @@ function countdown() {
     if (timeLeft < 11) {     
         document.getElementById('message').style.color = '#00FFFF';
     }
-
-    
-
-
 };
 
 // Run the whole goddamn thing.
 setTimeout(countdown, 1000);
-
