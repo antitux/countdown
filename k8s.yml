@@ -1,0 +1,70 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: countdown
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: countdown
+  namespace: countdown
+  labels:
+    app: countdown
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: countdown
+  template:
+    metadata:
+      labels:
+        app: countdown
+    spec:
+      imagePullSecrets:
+      - name: dockerhub
+      containers:
+      - name: countdown
+        image: antitux/countdown:latest
+        ports:
+        - containerPort: 80
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: countdown
+  namespace: countdown
+  labels:
+    service: countdown
+spec:
+  type: ClusterIP
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+  selector:
+    app: countdown
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: countdown-ingress
+  namespace: countdown
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  rules:
+  - http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: countdown
+              port:
+                number: 80
+  tls:
+  - hosts:
+    - 'countdown.home.antitux.net'
+    secretName: myingress-cert
