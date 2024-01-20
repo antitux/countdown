@@ -55,7 +55,8 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
-  - http:
+  - host: countdown.home.antitux.net
+    http:
       paths:
         - path: /
           pathType: Prefix
