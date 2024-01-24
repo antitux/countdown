@@ -9,18 +9,20 @@ No idea where this originally came from. If it ends up having a license, I'll re
 ## Usage
 
 Deploy to a web server or run locally. It's static html. You could probably very easily turn both of these into a streamelements extension pretty easily.
+Also built it as a Docker container for local hosting. You can get that [here](https://hub.docker.com/r/antitux/countdown).
+
 
 ### Variables
 
-| VAR  |  DEFAULT VALUE |
-|---|---|
-| message | Ads Running: |
-| timer  |  15 (seconds) |
+| VAR  |  DEFAULT VALUE | Description |
+|---|---|---|
+| message | Ads Running: | Default message |
+| timer  |  15 (seconds) | Timer (in seconds |
+| cursor | (none) | Blinking Cursor |
+| speed | 500 | Blinking Cursor Speed |
 
-You can also just add the file locally using a url like this as an OBS Browser Source, which will give you a 120 second timer with a message that says PONY:
+You can also just add the file locally using a url like this as an OBS Browser Source, which will give you a 120 second timer with a message that says PONY with a blinking `:` every half second
 
-```file://path/to/countdown/index.html?message=pony&timer=120```
-
-I've provided a manifest.yml to push to CloudFoundry, as that's what I use to host most of my projects. This could easily be dockerized too, but I'm lazy.
+```file://path/to/countdown/index.html?message=pony&timer=120&cursor=:&speed=500```
 
 Any other questions, feel free to [Shoot Me An Email](mailto:github@antitux.dev)
