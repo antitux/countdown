@@ -15,7 +15,17 @@ if (searchParams.has('message')) {
     console.log(searchParams.get('message'));
     message = searchParams.get('message');
     } else {
-    message = "Ads Running:";
+    message = "A Thing Happened";
+}
+
+if (searchParams.has('cursor')) {
+    console.log(searchParams.get('cursor'));
+    cursorCharacters = searchParams.get('cursor');
+}
+
+if (searchParams.has('speed')) {
+    console.log(searchParams.get('speed'));
+    cursorSpeed = searchParams.get('speed');
 }
 
 // Run the countdown
@@ -23,9 +33,27 @@ function countdown() {
     // Subtract from time left
     timeLeft--;
     // Set the initial message how you want it to look.
-    document.getElementById("message").innerHTML = String( message ) + "<br /> " + String(timeLeft);
-    
-    // If the timer still has time left, run it. Otherwise, hide it.
+    document.getElementById("message").innerHTML = String(message) + '<br />' + String(timeLeft);
+
+    if (cursorCharacters) {
+        document.getElementById("message").innerHTML = String(message) + '<span id="cursor">&nbsp</span><br />' + String(timeLeft);
+        document.getElementById("cursor").innerHTML = String(cursorCharacters);
+        if (cursorSpeed) {
+            var speed = String(cursorSpeed);
+        } else {
+            var speed = 500;
+        }
+        var cursorStatus = 0;
+        setInterval(() => {
+            if(cursorStatus == 0) {
+                document.getElementById('cursor').style.opacity = 0;
+                cursorStatus = 1;
+            } else if (cursorStatus == 1) {
+                document.getElementById('cursor').style.opacity = 1;
+                cursorStatus = 0;
+            }
+        }, speed);
+    }
     if (timeLeft > 0) {
         setTimeout(countdown, 1000);
     } else {
