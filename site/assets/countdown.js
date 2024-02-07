@@ -21,11 +21,15 @@ if (searchParams.has('message')) {
 if (searchParams.has('cursor')) {
     console.log(searchParams.get('cursor'));
     cursorCharacters = searchParams.get('cursor');
-}
+    } else {
+        cursorCharacters = "."
+    }
 
 if (searchParams.has('speed')) {
     console.log(searchParams.get('speed'));
     cursorSpeed = searchParams.get('speed');
+} else {
+    cursorSpeed = "250"
 }
 
 // Run the countdown
