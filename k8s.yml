@@ -55,7 +55,7 @@ metadata:
     cert-manager.io/cluster-issuer: letsencrypt-prod
 spec:
   rules:
-  - host: countdown.home.antitux.net
+  - host: countdown.antx.dev
     http:
       paths:
         - path: /
@@ -67,5 +67,5 @@ spec:
                 number: 80
   tls:
   - hosts:
-    - 'countdown.home.antitux.net'
+    - 'countdown.antx.dev'
     secretName: myingress-cert
