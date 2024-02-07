@@ -22,7 +22,7 @@ if (searchParams.has('cursor')) {
     console.log(searchParams.get('cursor'));
     cursorCharacters = searchParams.get('cursor');
     } else {
-        cursorCharacters = "."
+        cursorCharacters = ""
     }
 
 if (searchParams.has('speed')) {
