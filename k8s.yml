@@ -52,9 +52,19 @@ metadata:
   name: countdown-ingress
   namespace: countdown
   annotations:
-    cert-manager.io/cluster-issuer: letsencrypt-prod
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
+  - host: countdown.home.antitux.net
+    http:
+      paths:
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: countdown
+              port:
+                number: 80
   - host: countdown.antx.dev
     http:
       paths:
@@ -65,7 +75,3 @@ spec:
               name: countdown
               port:
                 number: 80
-  tls:
-  - hosts:
-    - 'countdown.antx.dev'
-    secretName: myingress-cert
